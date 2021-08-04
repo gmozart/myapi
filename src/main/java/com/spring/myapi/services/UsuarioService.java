@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.spring.myapi.domain.Usuario;
 import com.spring.myapi.repositories.UsuarioRepository;
+import com.spring.myapi.services.exceptions.ObjectNotFoundExcpetion;
 
 @Service
 public class UsuarioService {
@@ -21,7 +22,8 @@ public class UsuarioService {
 		
 		Optional<Usuario> obj = usuarioRepo.findById(id);
 		
-		return obj.orElse(null);
+		return obj.orElseThrow(() -> new ObjectNotFoundExcpetion(
+				"Objeto não Encontrado! Id:" + id +", Tipo: " +Usuario.class.getName()));
 	}
 	
 	
