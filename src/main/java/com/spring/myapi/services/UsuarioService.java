@@ -3,6 +3,8 @@ package com.spring.myapi.services;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,6 +33,18 @@ public class UsuarioService {
 		
 		
 		return usuarioRepo.findAll();
+	}
+
+
+	public Usuario update(Integer id, @Valid Usuario usuOBJ) {
+      
+		 Usuario newObj = findByid(id);
+		 newObj.setNomeString(usuOBJ.getNomeString());
+		 newObj.setLogin(usuOBJ.getLogin());
+		 newObj.setSenha(usuOBJ.getSenha());
+		
+		
+		return usuarioRepo.save(newObj);
 	}
 	
 	
