@@ -46,7 +46,18 @@ public class UsuarioService {
 		
 		return usuarioRepo.save(newObj);
 	}
+
+
+	public Usuario create(@Valid Usuario usuOBJ) {
 	
+		
+		return usuarioRepo.save(usuOBJ);
+	}
 	
+	public void delete(Integer id) {
+		
+		usuarioRepo.deleteById(id);
+		
+	}
 	
 }
