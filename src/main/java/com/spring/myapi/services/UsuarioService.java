@@ -56,6 +56,7 @@ public class UsuarioService {
 	
 	public void delete(Integer id) {
 		
+		findByid(id);
 		usuarioRepo.deleteById(id);
 		
 	}
